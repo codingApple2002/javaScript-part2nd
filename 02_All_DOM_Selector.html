@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 id="title" class="heading">
+            DOM learning on chai aur code. <span style="display: none;">test Text</span>
+        </h1>
+
+        <h2>A: Lorem, ipsum dolor.</h2>
+        <h2>B: Lorem, ipsum dolor.</h2>
+        <h2>C: Lorem, ipsum dolor.</h2>
+
+        <ul>
+            <li class="list">one</li>
+            <li class="list">two</li>
+            <li class="list">three</li>
+            <li class="list">four</li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    const ele = document.getElementById('title')
+
+    console.log(ele.id); //'title'
+    console.log(ele.class); //undefined
+    console.log(ele.className); //'heading'
+    console.log(ele.getAttribute('id')); //'title'
+    console.log(ele.getAttribute('class')); //'heading'
+
+    ele.setAttribute('class','test'); //it always overrides now class is 'test' not 'heading'
+    ele.setAttribute('class','test heading'); //now class is 'test' and 'heading' as well
+
+    //some css using js,
+    const title = document.getElementById('title')
+    title.style.backgroundColor = 'green'
+    title.style.padding = '15px'
+    title.style.borderRadius = '15px'
+
+    //use,
+    console.log(title.innerHTML); //provides the inner HTML
+    console.log(title.innerText); //provides text that is visible
+    console.log(title.textContent); //provides the entire content even if its not visible.
+
+    //querySelector (provides the 1st element, similar to css selectors)
+    document.querySelector('h2'); 
+    document.querySelector('#title');
+    document.querySelector('.heading');
+
+    // const myul = document.querySelector('ul')
+    // const turnGreen = myul.querySelector('li')
+    // turnGreen.style.backgroundColor = "green"
+    // turnGreen.innerText = "lol one"
+    // turnGreen.innerText = "lol five"
+
+    const tempLiList = document.querySelectorAll('li') //provides a Node List
+    // tempLiList.style.color = "green" //throws error
+    tempLiList[0].style.color = "green" //done
+    //Note:- querySelectorAll, provides Node List, we can't just simply style, we have to mention element.
+    tempLiList.forEach(function(l){
+        l.style.backgroundColor = "green"
+    }); //all li background turned into green.
+
+    const tempClassList = document.getElementsByClassName("list")
+    //i can't use for each on it, provides HTML collection
+    const myArr = Array.from(tempClassList)
+    myArr.forEach(function(i){
+        i.style.color = "orange"
+    })
+    
+</script>
+</html>

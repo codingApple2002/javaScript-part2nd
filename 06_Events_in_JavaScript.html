@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: white;
+        }
+
+        .main{
+            border: 2px solid white;
+            height: 50vh;
+        }
+
+        .animals{
+            height: 20%;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div class="main">
+        <div id="owl" class="animals">Owl</div>
+        <div id="cat" class="animals">Cat</div>
+        <div id="tiger" class="animals">Tiger</div>
+        <div id="dog" class="animals">Dog</div>
+        <div id="fish" class="animals">Fish</div>
+    </div>
+
+    <p><a href="https://google.com" id="google">Google</a></p>
+</body>
+<script>
+    //use onclick in tag itself
+    // onclick="alert('owl')"
+
+    //or
+    // document.getElementById('owl').onclick = function(){
+    //     alert('owl again')
+    // }//it gives less features
+
+    //or
+    //Event Listeners
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert('owl clicked again')
+    // })
+
+    //attachEvent(), jQuery ;early methods
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log(e);//event Object
+    // },false)//here false is default parameter
+
+    //things that i need to study...,
+    //types(keyboard, mouse), timestamp, defaultPrevented,
+    //target, toElement, srcElement, current Target,
+    //clientx, clienty, screenX, screenY,
+    //altKey, ctrlKey, shiftKey, KeyCode
+
+    //Event propagation,(refer notes for this as well, only testing done here)
+    // document.getElementsByClassName('main')[0].addEventListener('click',function(){
+    //     console.log("clicked inside the main");
+    // },false)
+    // document.getElementById("owl").addEventListener('click',function(){
+    //     console.log("owl clicked");
+    // },false)
+    // owl clicked 
+    // clicked inside the main ...as false -> bubbling -> inside to outside 
+
+    // document.getElementsByClassName('main')[0].addEventListener('click',function(){
+    //     console.log("clicked inside the main");
+    // },true)
+    // document.getElementById("owl").addEventListener('click',function(e){
+    //     console.log("owl clicked");
+    //     // e.stopPropagation(); //to stop propagation
+    // },true)
+    // clicked inside the main 
+    // owl clicked ...as true -> event capturing -> outside to inside
+
+
+    //e.preventDefault()
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault();
+    },false)
+
+    //simple project, (write a program to remove a image/tagInsideParentElement when clicked on it)
+    document.getElementsByClassName('main')[0].addEventListener('click',function(e){
+        console.log(e.target.className);
+        if(e.target.className === 'animals'){
+            // e.target.remove();
+            //or
+            e.target.parentNode.removeChild(e.target);
+        }
+    }) //code of this project is different from the video/notes code because of html written...do consider that please.
+
+</script>
+</html>

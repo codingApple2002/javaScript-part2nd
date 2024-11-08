@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 class="heading">Apple</h1>
+        <p>Hi, I'm Apple</p>
+    </div>
+</body>
+<script>
+    //code starts from here
+
+    console.log(window);
+
+    // console.log(window.document); //or
+    console.log(document);
+
+    console.dir(document); //to see other information as well
+
+    //then there is diagram of DOM (refer notes for that)
+
+    //try on browser console
+    console.log(document.baseURI); //provides url of the page
+    console.log(document.links); //provides all the links in HTML collections
+
+    //tried on wikipedia
+    const ele = document.getElementById("Welcome_to_Wikipedia")
+    ele.innerHTML = "<h1>Shashank</h1>"
+    //page got changed 
+
+</script>
+</html>
